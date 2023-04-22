@@ -45,12 +45,12 @@ public class Driver {
         this.cab = cab;
     }
 
-    public List<TripBooking> getBookings() {
-        return bookings;
+    public List<TripBooking> getTripBookingList() {
+        return tripBookingList;
     }
 
-    public void setBookings(List<TripBooking> bookings) {
-        this.bookings = bookings;
+    public void setTripBookingList(List<TripBooking> bookings) {
+        this.tripBookingList = bookings;
     }
 
     public Driver(int driverId, String mobile, String password, Cab cab, List<TripBooking> bookings) {
@@ -58,7 +58,7 @@ public class Driver {
         this.mobile = mobile;
         this.password = password;
         this.cab = cab;
-        this.bookings = bookings;
+        this.tripBookingList = bookings;
     }
 
     public Driver() {
@@ -68,5 +68,5 @@ public class Driver {
     Cab cab;
 
     @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)
-    List<TripBooking> bookings = new ArrayList<>();
+    List<TripBooking> tripBookingList = new ArrayList<>();
 }

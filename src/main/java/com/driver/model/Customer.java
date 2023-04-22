@@ -37,24 +37,24 @@ public class Customer {
         this.password = password;
     }
 
-    public List<TripBooking> getBookings() {
-        return bookings;
+    public List<TripBooking> getTripBookingList() {
+        return tripBookingList;
     }
 
-    public void setBookings(List<TripBooking> bookings) {
-        this.bookings = bookings;
+    public void setTripBookingList(List<TripBooking> bookings) {
+        this.tripBookingList = bookings;
     }
 
     public Customer(int customerId, String mobile, String password, List<TripBooking> bookings) {
         this.customerId = customerId;
         this.mobile = mobile;
         this.password = password;
-        this.bookings = bookings;
+        this.tripBookingList = bookings;
     }
 
     public Customer() {
     }
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    List<TripBooking> bookings = new ArrayList<>();
+    List<TripBooking> tripBookingList = new ArrayList<>();
 }
