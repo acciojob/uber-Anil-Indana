@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
 			Driver driver = trip.getDriver();
 			Cab cab = driver.getCab();
 			cab.setAvailable(true);
-			trip.setTripStatus(TripStatus.CANCELED);
+			trip.setStatus(TripStatus.CANCELED);
 			driverRepository2.save(driver);
 		}
 		customerRepository2.delete(customer);
@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
 		List<Driver> list = driverRepository2.findAll();
 		Driver driver = null;
 		for(Driver d : list){
-			if(d.getCab().isAvailable()){
+			if(d.getCab().getAvailable()){
 				if((driver == null) || (driver.getDriverId() > d.getDriverId())){
 					driver = d;
 				}
@@ -62,7 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
 		if(driver == null) throw new Exception("No cab available!");
 		Cab cab = driver.getCab();
 		TripBooking tripBooking = new TripBooking();
-		tripBooking.setTripStatus(TripStatus.CONFIRMED);
+		tripBooking.setStatus(TripStatus.CONFIRMED);
 		tripBooking.setDriver(driver);
 		tripBooking.setFromLocation(fromLocation);
 		tripBooking.setToLocation(toLocation);
@@ -83,7 +83,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void cancelTrip(Integer tripId){
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-		tripBooking.setTripStatus(TripStatus.CANCELED);
+		tripBooking.setStatus(TripStatus.CANCELED);
 		tripBooking.getDriver().getCab().setAvailable(true);
 		tripBookingRepository2.save(tripBooking);
 	}
@@ -92,7 +92,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-		tripBooking.setTripStatus(TripStatus.COMPLETED);
+		tripBooking.setStatus(TripStatus.COMPLETED);
 		tripBooking.getDriver().getCab().setAvailable(true);
 		tripBookingRepository2.save(tripBooking);
 	}
