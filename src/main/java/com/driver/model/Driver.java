@@ -9,24 +9,24 @@ import java.util.List;
 public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
-    private String mobNo;
+    private int driverId;
+    private String mobile;
     private String password;
 
-    public int getId() {
-        return id;
+    public int getDriverId() {
+        return driverId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
     }
 
-    public String getMobNo() {
-        return mobNo;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMobNo(String mobNo) {
-        this.mobNo = mobNo;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getPassword() {
@@ -53,9 +53,9 @@ public class Driver {
         this.bookings = bookings;
     }
 
-    public Driver(int id, String mobNo, String password, Cab cab, List<TripBooking> bookings) {
-        this.id = id;
-        this.mobNo = mobNo;
+    public Driver(int driverId, String mobile, String password, Cab cab, List<TripBooking> bookings) {
+        this.driverId = driverId;
+        this.mobile = mobile;
         this.password = password;
         this.cab = cab;
         this.bookings = bookings;

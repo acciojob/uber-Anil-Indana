@@ -8,27 +8,27 @@ import javax.persistence.*;
 public class Admin{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
-    private String userName;
+    private int adminId;
+    private String username;
     private String password;
 
     public Admin() {
     }
 
-    public int getId() {
-        return id;
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -39,9 +39,9 @@ public class Admin{
         this.password = password;
     }
 
-    public Admin(int id, String userName, String password) {
-        this.id = id;
-        this.userName = userName;
+    public Admin(int adminId, String username, String password) {
+        this.adminId = adminId;
+        this.username = username;
         this.password = password;
     }
 }
